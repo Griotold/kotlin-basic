@@ -2,6 +2,8 @@ package learnclass
 
 import learnclass.Color.*
 import java.lang.RuntimeException
+import java.time.LocalDateTime
+import java.time.Duration
 
 enum class Color {
     RED, ORANGE, YELLOW, GREEN, BLUE
@@ -9,6 +11,9 @@ enum class Color {
 
 fun main() {
     println(getKoreanColorName(RED))
+    printObject("OBJECT")
+    printObject(Duration.ofNanos(3456))
+    printObject(LocalDateTime.of(2023, 12, 12, 10, 10))
 }
 
 fun getKoreanColorName(color: Color):String = when(color){
@@ -25,3 +30,15 @@ fun mix(c1:Color, c2:Color) =
         else -> throw RuntimeException()
     }
 
+fun printObject(obj: Any): Unit = when (obj) {
+    is String -> println(obj.lowercase())
+    is Duration -> println(obj.nano)
+    is LocalDateTime -> println(obj.month)
+    else -> println("Unknown type")
+}
+
+fun printObjectIf(obj:Any):Unit = if(obj is String) {
+    println(obj.lowercase())
+} else {
+    println("nothing")
+}

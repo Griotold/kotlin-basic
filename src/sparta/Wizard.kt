@@ -1,15 +1,17 @@
 package sparta
 
-class Wizard {
+class Wizard : Character {
     var name: String = ""
     var age: Int = 0
-    var gender:String = ""
-    var money:Int = 0
-    var hp:Int = 0
-    var mp:Int = 0
+    var gender: String = ""
+    var money: Int = 0
+    var hp: Int = 0
+    var mp: Int = 0
 
-    constructor(_name:String, _age:Int, _gender:String,
-                _money:Int, _hp:Int, _mp:Int) {
+    constructor(
+        _name: String, _age: Int, _gender: String,
+        _money: Int, _hp: Int, _mp: Int
+    ) {
         println("${name}마법사 생성")
         name = _name
         age = _age
@@ -19,7 +21,7 @@ class Wizard {
         mp = _mp
     }
 
-    fun attack() {
+    override fun attack() {
         println("에너지 볼!")
     }
 
@@ -27,7 +29,7 @@ class Wizard {
         println("파이어 볼!")
     }
 
-    fun teleport(src:Int, dst:Int){
+    fun teleport(src: Int, dst: Int) {
         println("${src}에서 ${dst}로 텔레포트!")
     }
 }

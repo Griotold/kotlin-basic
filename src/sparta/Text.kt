@@ -4,22 +4,22 @@ fun main() {
     val worldName = "스코월드"
 
     println("이름을 입력해주세요")
-    var myName = readLine()!!
+    var myName = readln()
 
     println("나이를 입력해주세요")
-    var myAge = readLine()!!.toInt()
+    var myAge = readln().toInt()
 
     println("직업을 입력해주세요")
-    var myJob = readLine()!!
+    var myJob = readln()
 
     println("성별을 입력해주세요")
-    var myGender = readLine()!!
+    var myGender = readln()
 
     println("초기자본을 입력해주세요")
-    var myMoney = readLine()!!.toInt()
+    var myMoney = readln().toInt()
 
     println("초기체력을 입력해주세요")
-    var myHp = readLine()!!.toInt()
+    var myHp = readln().toInt()
     var myMp = 0
 
     var isNamePass = true
@@ -39,12 +39,12 @@ fun main() {
 
         if (myJob == "마법사") {
             println("마법사는 초기 mp도 입력해주세요")
-            myMp = readLine()!!.toInt()
+            myMp = readln().toInt()
             var myCharacter = Wizard(myName, myAge, myGender, myMoney, myHp, myMp)
 
             println("던전을 선택해주세요")
             println("[1] 슬라임 동굴, [2] 좀비마을")
-            var selectedWorld = readLine()!!.toInt()
+            var selectedWorld = readln().toInt()
             selectWorldByWizard(selectedWorld, myCharacter)
         } else if (myJob == "궁수") {
             println("궁수를 선택했군요")
@@ -52,7 +52,7 @@ fun main() {
 
             println("던전을 선택해주세요")
             println("[1] 슬라임 동굴, [2] 좀비마을")
-            var selectWorld = readLine()!!.toInt()
+            var selectWorld = readln().toInt()
             selectWorldByArcher(selectWorld, myCharacter)
         }
     }
@@ -106,6 +106,8 @@ fun selectWorldByWizard(selectedWorld: Int, myCharacter: Wizard) {
         var slime1 = Slime("초록슬라임", "초록", 30.2, 200, 10)
         slime1.attack()
         myCharacter.attack()
+
+        slime1.poison()
     } else if (selectedWorld == 2) {
         var zombie1 = Zombie("파랑좀비", "파랑", 142.2, 500, 25)
         zombie1.virus()
@@ -115,12 +117,14 @@ fun selectWorldByWizard(selectedWorld: Int, myCharacter: Wizard) {
 }
 
 fun selectWorldByArcher(selectWorld: Int, myCharacter: Archer) {
-    if(selectWorld == 1) { // 슬라임 던전
-        var slime1 = Slime("초록슬라임", "초록", 30.2, 200, 10)
+    if (selectWorld == 1) { // 슬라임 던전
+        var slime1 = Slime("파랑 슬라임", "파랑", 30.2, 200, 10)
         slime1.attack()
         myCharacter.windArrow()
 
-    } else if(selectWorld == 2) { // 좀비 던전
+        slime1.poison()
+
+    } else if (selectWorld == 2) { // 좀비 던전
         var zombie1 = Zombie("파랑좀비", "파랑", 142.2, 500, 25)
         zombie1.virus()
         myCharacter.windJump("건물1")

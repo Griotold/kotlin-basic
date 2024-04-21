@@ -3,23 +3,17 @@ package sparta
 fun main() {
     val worldName = "스코월드"
 
-    println("이름을 입력해주세요")
-    var myName = readln()
+    var myName = inputMyInfo("name").toString()
 
-    println("나이를 입력해주세요")
-    var myAge = readln().toInt()
+    var myAge = inputMyInfo("age").toString().toInt()
 
-    println("직업을 입력해주세요")
-    var myJob = readln()
+    var myJob = inputMyInfo("job").toString()
 
-    println("성별을 입력해주세요")
-    var myGender = readln()
+    var myGender = inputMyInfo("gender").toString()
 
-    println("초기자본을 입력해주세요")
-    var myMoney = readln().toInt()
+    var myMoney = inputMyInfo("money").toString().toInt()
 
-    println("초기체력을 입력해주세요")
-    var myHp = readln().toInt()
+    var myHp = inputMyInfo("hp").toString().toInt()
     var myMp = 0
 
     var isNamePass = true
@@ -97,7 +91,6 @@ private fun displayInfo(worldName: String, myName: String, myAge: Int, myJob: St
     println("이름: ${myName}")
     println("나이: ${myAge}")
     println("직업: ${myJob}")
-    println("나이: ${myAge}")
     println("모험을 떠나 볼까요?")
 }
 
@@ -130,4 +123,122 @@ fun selectWorldByArcher(selectWorld: Int, myCharacter: Archer) {
         myCharacter.windJump("건물1")
     }
 
+}
+
+fun inputMyInfo(type: String): Any? {
+    return when (type) {
+        "name" -> {
+            println("이름을 입력해주세요")
+            while (true) {
+                try {
+                    var originName = readlnOrNull()
+                    if (originName?.first() != '_'
+                        && originName?.first() != '!'
+                    ) {
+                        return originName
+                    } else {
+                        println("이름을 다시 입력해주세요")
+                    }
+                } catch (e: Exception) {
+                    println("이름을 다시 입력해주세요")
+                }
+            }
+        }
+
+        "age" -> {
+            println("나이를 입력해주세요")
+            while (true) {
+                try {
+                    var originAge: String? = readlnOrNull()
+                    return originAge?.toInt() ?: -1
+                } catch (e: Exception) {
+                    println("나이를 다시 입력해주세요")
+                }
+            }
+        }
+
+        "job" -> {
+            println("직업을 입력해주세요")
+            while (true) {
+                try {
+                    var originJob = readlnOrNull()
+                    if (originJob?.equals("궁수") == true || originJob.equals("마법사")) {
+                        return originJob
+                    } else {
+                        println("직업을 다시 입력해주세요")
+                    }
+                } catch (e: Exception) {
+                    println("직업을 다시 입력해주세요")
+                }
+            }
+        }
+
+        "gender" -> {
+            println("성별을 입력해주세요")
+            while (true) {
+                try {
+                    var originGender = readlnOrNull()
+                    if (originGender?.equals("남") == true || originGender?.equals("여") == true) {
+                        return originGender
+                    } else {
+                        println("성별을 다시 입력해주세요")
+                    }
+                } catch (e: Exception) {
+                    println("성별을 다시 입력해주세요")
+                }
+            }
+        }
+
+        "money" -> {
+            println("초기자본을 입력해주세요")
+            while (true) {
+                try {
+                    var originMoney: String? = readlnOrNull()
+                    return originMoney?.toInt() ?: -1
+                } catch (e: Exception) {
+                    println("초기자본을 다시 입력해주세요")
+                }
+            }
+        }
+
+        "hp" -> {
+            println("초기체력을 입력해주세요")
+            while (true) {
+                try {
+                    var originHp: String? = readlnOrNull()
+                    return originHp?.toInt() ?: -1
+                } catch (e: Exception) {
+                    println("초기체력을 다시 입력해주세요")
+                }
+            }
+        }
+
+        "mp" -> {
+            println("초기마나를 입력해주세요")
+            while (true) {
+                try {
+                    var originMp: String? = readlnOrNull()
+                    return originMp?.toInt() ?: -1
+                } catch (e: Exception) {
+                    println("초기마나를 다시 입력해주세요")
+                }
+            }
+        }
+
+        "selectWorld" -> {
+            println("월드를 선택해주세요")
+            while (true) {
+                try {
+                    var selectWorld: String? = readlnOrNull()
+                    return selectWorld?.toInt() ?: -1
+                } catch (e: Exception) {
+                    println("월드를 다시 선택해주세요")
+                }
+            }
+        }
+
+        else -> {
+            return "no"
+        }
+    }
 }

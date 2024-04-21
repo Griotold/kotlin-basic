@@ -1,11 +1,11 @@
 package sparta
 
 class Slime : Monster, GreenSlimeSkill {
-    var name: String = ""
-    var color: String = ""
-    var height: Double = 0.0
-    var hp: Int = 0
-    var damage: Int = 0
+    var name: String
+    var color: String
+    var height: Double
+    var hp: Int
+    var damage: Int
 
     constructor(
         _name: String, _color: String, _height: Double,
